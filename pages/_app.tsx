@@ -44,9 +44,7 @@ const CustomApp: FC<CustomAppProps> = (props) => {
           attribute="class"
         >
           <AppThemeProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
+            <Component {...pageProps} />
           </AppThemeProvider>
         </NextThemeProvider>
       </StylesProvider>

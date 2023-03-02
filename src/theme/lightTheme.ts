@@ -109,7 +109,7 @@ export const getLightTheme = (): ThemeOptions => {
       // divider: "",
     },
     typography: {
-      fontFamily: ['"Roboto"', '"Helvetica"', '"Arial"', "sans-serif"].join(","),
+      fontFamily: ['"Golos Text"', "sans-serif"].join(","),
       htmlFontSize: 16,
       fontSize: 14,
       fontWeightBold: 700,
@@ -117,19 +117,19 @@ export const getLightTheme = (): ThemeOptions => {
       fontWeightRegular: 400,
       fontWeightLight: 300,
       h1: {
-        fontSize: "clamp(2.625rem, 1.2857rem + 3.5714vw, 4rem)",
-        fontWeight: 400,
+        fontSize: "3.5rem",
+        fontWeight: 700,
         lineHeight: 1.5,
       },
       h2: {
-        fontSize: "clamp(1.5rem, 0.9643rem + 1.4286vw, 2.25rem)",
-        fontWeight: 400,
+        fontSize: "2rem",
+        fontWeight: 600,
         lineHeight: 1.5,
       },
       h3: {
-        fontSize: "2.25rem",
-        lineHeight: 1.5,
+        fontSize: "1.5rem",
         fontWeight: 400,
+        lineHeight: 1.5,
       },
       h4: {
         fontSize: "1.75rem",
