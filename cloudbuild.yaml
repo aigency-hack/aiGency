@@ -1,0 +1,60 @@
+steps:
+  # Build and push the container image
+  - name: "gcr.io/kaniko-project/executor:latest"
+    id: build
+    waitFor:
+      - "-"
+    args:
+      - --destination
+      - gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME
+      - --build-arg
+      - NEXT_PUBLIC_API_URL=${_NEXT_PUBLIC_API_URL}
+      - --cache=true
+
+  # Deploy container image to Cloud Run
+  - name: "gcr.io/cloud-builders/gcloud"
+    id: "deploy"
+    waitFor:
+      - "build"
+    args:
+      - run
+      - deploy
+      - "${_SERVICE_NAME}-${_APP_ENV}"
+      - --image
+      - gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME
+      - --region
+      - ${_REGION}
+      - --platform
+      - managed
+      - --allow-unauthenticated
+
+  # Force the new revision to serve 100% of traffic.
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    id: "update-traffic"
+    entrypoint: "gcloud"
+    waitFor:
+      - "deploy"
+    args:
+      [
+        "run",
+        "services",
+        "update-traffic",
+        "${_SERVICE_NAME}-${_APP_ENV}",
+        "--to-latest",
+        "--platform",
+        "managed",
+        "--region",
+        "${_REGION}",
+      ]
+
+substitutions:
+  _SERVICE_NAME: nextjs-mui-template
+  _APP_ENV: staging
+  _REGION: asia-southeast1
+  _GITHUB_OWNER: ${_OWNER:kaoths}
+
+options:
+  dynamicSubstitutions: true
+  machineType: "UNSPECIFIED"
+
+timeout: 1200s
