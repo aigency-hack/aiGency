@@ -1,1 +1,1 @@
-export { Home as default } from '../src/views/landing/page/index'
+export { Home as default } from "../src/views/landing/page/index";
