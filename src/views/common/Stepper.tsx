@@ -22,7 +22,7 @@ function CustomStepIcon(props: StepIconProps) {
   }
 }
 
-export default function BaseStepper({ activeStep }: props) {
+export default function BaseStepper({ activeStep }: Props) {
   return (
     <Box
       sx={{
