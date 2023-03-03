@@ -45,7 +45,7 @@ export const Navbar: FC<Props> = (props) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            boxShadow: isScrollTriggered ? theme.shadows[5] : "none",
+            boxShadow: "none !important",
             backgroundColor: isScrollTriggered ? theme.palette.background.default : "transparent",
             zIndex: theme.zIndex.drawer + 1,
             transition: "background-color 200ms",
