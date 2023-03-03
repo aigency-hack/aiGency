@@ -15,17 +15,16 @@ const colorConstant = {
   "Blog content": "#F2D4FF",
   Marketing: "#FFD2D1",
 };
-export default function TipItem() {
+export default function TipItem(props: any) {
   return (
     <>
       <Box marginTop="24px" marginBottom="24px">
         <Typography fontWeight="600" color="#6A6A6A">
-          Topic name
+          {props.title}
         </Typography>
         <Box marginTop="8px">
           <Typography fontWeight="700" fontSize="20px" color="#252525">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur. Eu tincidunt id tortor morbi mi convallis.
+            {props.topic}
           </Typography>
         </Box>
       </Box>

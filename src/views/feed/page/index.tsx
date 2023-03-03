@@ -95,41 +95,13 @@ export const Feed: NextPage = () => {
     content: "",
     image: "",
   });
-  const [idea1, setIdea1] = useState<any>({
-    header: "",
-    content: "",
-    image: "",
-  });
-  const [idea2, setIdea2] = useState<any>({
-    header: "",
-    content: "",
-    image: "",
-  });
-  const [idea3, setIdea3] = useState<any>({
-    header: "",
-    content: "",
-    image: "",
-  });
-  const [idea4, setIdea4] = useState<any>({
-    header: "",
-    content: "",
-    image: "",
-  });
-  const [idea5, setIdea5] = useState<any>({
-    header: "",
-    content: "",
-    image: "",
-  });
-  const [idea6, setIdea6] = useState<any>({
-    header: "",
-    content: "",
-    image: "",
-  });
-  const [idea7, setIdea7] = useState<any>({
-    header: "",
-    content: "",
-    image: "",
-  });
+  const [topic1, setTopic1] = useState<string>("");
+  const [topic2, setTopic2] = useState<string>("");
+  const [topic3, setTopic3] = useState<string>("");
+  const [topic4, setTopic4] = useState<string>("");
+  const [topic5, setTopic5] = useState<string>("");
+  const [topic6, setTopic6] = useState<string>("");
+  const [topic7, setTopic7] = useState<string>("");
 
   const handleCreatePost = useGencyCreatePost();
   const handleCreateBlog = useGencyCreateBlog();
@@ -177,7 +149,7 @@ export const Feed: NextPage = () => {
         purpose: null,
       });
       setFeed3({
-        header: feed3Data.content,
+        header: `Social Media Post for ${form.name}`,
         content: feed3Data.content,
         image: feed3Data.images[0],
         type: "Social media & Ads",
@@ -190,48 +162,13 @@ export const Feed: NextPage = () => {
         },
         mood: form.toneOfVoice[0],
       });
-      setIdea1({
-        header: ideaData[0],
-        content: ideaData[0],
-        image: null,
-        type: "Ideas",
-      });
-      setIdea2({
-        header: ideaData[1],
-        content: ideaData[1],
-        image: null,
-        type: "Ideas",
-      });
-      setIdea3({
-        header: ideaData[2],
-        content: ideaData[2],
-        image: null,
-        type: "Ideas",
-      });
-      setIdea4({
-        header: ideaData[3],
-        content: ideaData[3],
-        image: null,
-        type: "Ideas",
-      });
-      setIdea5({
-        header: ideaData[4],
-        content: ideaData[4],
-        image: null,
-        type: "Ideas",
-      });
-      setIdea6({
-        header: ideaData[5],
-        content: ideaData[5],
-        image: null,
-        type: "Ideas",
-      });
-      setIdea7({
-        header: ideaData[6],
-        content: ideaData[6],
-        image: null,
-        type: "Ideas",
-      });
+      setTopic1(ideaData[0]);
+      setTopic2(ideaData[1]);
+      setTopic3(ideaData[2]);
+      setTopic4(ideaData[3]);
+      setTopic5(ideaData[4]);
+      setTopic6(ideaData[5]);
+      setTopic7(ideaData[6]);
     };
     fetch();
   }, [form]);
@@ -359,8 +296,13 @@ export const Feed: NextPage = () => {
               Tips
             </Typography>
           </Box>
-          <TipItem />
-          <TipItem />
+          <TipItem topic={topic1} title="Day 1 Topic:" />
+          <TipItem topic={topic2} title="Day 2 Topic:" />
+          <TipItem topic={topic3} title="Day 3 Topic:" />
+          <TipItem topic={topic4} title="Day 4 Topic:" />
+          <TipItem topic={topic5} title="Day 5 Topic:" />
+          <TipItem topic={topic6} title="Day 6 Topic:" />
+          <TipItem topic={topic7} title="Day 7 Topic:" />
         </Box>
       </Box>
     </Box>

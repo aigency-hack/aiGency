@@ -23,17 +23,22 @@ export default function FeedItem(props: any) {
           <Typography>3 March</Typography>
         </Box>
         <Box display="flex" paddingRight="64px" justifyContent="space-between" alignItems="center">
-          <Box>
+          <Box marginTop="16px">
             <Typography fontWeight="700" variant="h3">
               {props.header}
             </Typography>
-            <Box marginTop="16px">{props.content}</Box>
+            <Box
+              sx={{ height: "100px", overflow: "hidden", textOverflow: "ellipsis" }}
+              marginTop="16px"
+            >
+              {props.content}
+            </Box>
           </Box>
-          <Box>
+          <Box sx={{ marginLeft: "16px" }}>
             <img width="140px" height="140px" src={props.image} />
           </Box>
         </Box>
-        <PrimaryButton sx={{ borderRadius: "24px" }} startIcon={<Bolt />}>
+        <PrimaryButton sx={{ marginTop: "16px", borderRadius: "24px" }} startIcon={<Bolt />}>
           More from this topic
         </PrimaryButton>
       </Box>
