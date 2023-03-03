@@ -65,16 +65,17 @@ export const Navbar: FC<Props> = (props) => {
               },
             }}
           >
-            <NextLink href="/" passHref>
-              <Box
-                component="a"
-                color={theme.palette.mode === "light" ? "black" : "white"}
-                px={1.5}
-                sx={{ backgroundColor: "inherit" }}
-              >
-                <NextJSIcon height={46} width={null} style={{ verticalAlign: "middle" }} />
-              </Box>
-            </NextLink>
+            <Box
+              component="a"
+              color={theme.palette.mode === "light" ? "black" : "white"}
+              px="60px"
+              sx={{ backgroundColor: "inherit" }}
+            >
+              <Typography variant="h2">
+                <span style={{ color: "#FFB652" }}>ai</span>
+                <span style={{ color: "#0D1A2D" }}>Gency</span>
+              </Typography>
+            </Box>
             <Box
               display="flex"
               justifyContent="space-between"
@@ -85,7 +86,7 @@ export const Navbar: FC<Props> = (props) => {
               <Box />
               <Typography variant="h3">Navbar</Typography>
               <Stack direction="row" spacing={3}>
-                <ThemeToggleSwitch />
+                {/* <ThemeToggleSwitch /> */}
               </Stack>
             </Box>
           </Box>

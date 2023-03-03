@@ -1,22 +1,19 @@
 import Box from "@mui/material/Box";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import { StepIconProps, Typography } from "@mui/material";
-
-const steps = ["Create Profile", "Brand details", "Type of contents"];
+import Check from "@mui/icons-material/Check";
+import { Typography } from "@mui/material";
 
 type Props = {
   onChange: any;
-  value: any;
+  value: string[];
 };
 
 type ContentBoxProps = {
   children: any;
+  onClick: any;
   active?: boolean;
 };
 
-const ContentBox = ({ children, active }: ContentBoxProps) => {
+const ContentBox = ({ children, active, onClick }: ContentBoxProps) => {
   return (
     <Box
       sx={{
@@ -24,6 +21,7 @@ const ContentBox = ({ children, active }: ContentBoxProps) => {
         color: active ? "white" : "black",
         backgroundColor: active ? "#0D1A2D" : "",
       }}
+      onClick={() => onClick()}
       display="flex"
       justifyContent="center"
       alignItems="center"
@@ -33,22 +31,50 @@ const ContentBox = ({ children, active }: ContentBoxProps) => {
       marginRight="16px"
       borderRadius="12px"
     >
+      {active && <Check sx={{ marginRight: "8px" }} />}
       <Typography fontWeight="600">{children}</Typography>
     </Box>
   );
 };
 
 // export default function ContentSelector({ onChange, value }: Props) {
-export default function ContentSelector() {
+export default function ContentSelector({ onChange, value }: Props) {
+  const handleChange = (val) => {
+    const updateValue = [...value];
+    if (updateValue.includes(val)) {
+      const indice = updateValue.indexOf(val);
+      updateValue.splice(indice, 1);
+    } else {
+      updateValue.push(val);
+    }
+    onChange([...updateValue]);
+  };
   return (
     <Box display="flex" flexDirection="column">
       <Box display="flex" justifyContent="space-around">
-        <ContentBox>Social media & Ads</ContentBox>
-        <ContentBox>Blog content</ContentBox>
+        <ContentBox
+          onClick={() => handleChange("Social media & Ads")}
+          active={value.includes("Social media & Ads")}
+        >
+          Social media & Ads
+        </ContentBox>
+        <ContentBox
+          onClick={() => handleChange("Blog content")}
+          active={value.includes("Blog content")}
+        >
+          Blog content
+        </ContentBox>
       </Box>
       <Box marginTop="16px" display="flex" justifyContent="space-around">
-        <ContentBox>Website copy & SEO</ContentBox>
-        <ContentBox>Marketing</ContentBox>
+        <ContentBox
+          onClick={() => handleChange("Website copy & SEO")}
+          active={value.includes("Website copy & SEO")}
+        >
+          Website copy & SEO
+        </ContentBox>
+        <ContentBox onClick={() => handleChange("Marketing")} active={value.includes("Marketing")}>
+          Marketing
+        </ContentBox>
       </Box>
     </Box>
   );

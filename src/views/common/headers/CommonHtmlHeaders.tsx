@@ -6,7 +6,7 @@ export const CommonHTMLHeaders = () => {
   const websiteBaseUrl = process.env.NEXT_PUBLIC_WEBSITE_BASE_URL ?? '';
   return (
     <Head>
-      <title>NextJS + Mui</title>
+      <title>AIgency</title>
       <meta
         name="description"
         content=""

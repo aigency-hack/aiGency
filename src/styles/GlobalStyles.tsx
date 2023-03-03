@@ -7,7 +7,7 @@ const styles = css`
     min-height: 100vh;
     padding: 0 !important;
     margin: 0 !important;
-    background-color: #f3f2f2 !important;
+    background-color: white !important;
     color: black !important;
   }
 

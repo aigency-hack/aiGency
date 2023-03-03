@@ -3,6 +3,7 @@ import { FC, useState } from "react";
 import { PrimaryButton } from "../common/PrimaryButton";
 import { SecondaryButton } from "../common/SecondaryButton";
 import { BaseSelect } from "../common/Select";
+import { BaseMultiSelect } from "../common/MutliSelect";
 import BaseStepper from "../common/Stepper";
 import { StyledTextField } from "../common/TextField";
 import { FormType } from "./type/form.type";
@@ -26,6 +27,15 @@ const areaOption = [
   { label: "AMER", value: "AMER" },
   { label: "Domestic", value: "Domestic" },
 ];
+const toneOfVoiceOption = [
+  { label: "😊 Friendly", value: "Friendly" },
+  { label: "💎  Luxury", value: "Luxury" },
+  { label: "☺️ Relaxed", value: "Relaxed" },
+  { label: "💼 Professional", value: "Professional" },
+  { label: "💪🏻 Bold", value: "Bold" },
+  { label: "⛺ Adventurous", value: "Adventurous" },
+  { label: "💡 Witty", value: "Witty" },
+];
 export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
   const {
     name,
@@ -43,6 +53,7 @@ export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
     oldValue[field] = changeVal;
     onChange({ ...oldValue });
   };
+  console.log("value ", value);
   const [step, setStep] = useState(1);
   return (
     <Box bgcolor="white" padding="24px" borderRadius="24px" minWidth="548px">
@@ -65,7 +76,9 @@ export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
               <BaseSelect
                 value={category}
                 options={options}
-                onChange={(val) => handleFormChange("category", val)}
+                onChange={(e) => {
+                  handleFormChange("category", e.target.value);
+                }}
               />
             </Box>
           </Box>
@@ -128,10 +141,17 @@ export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
           <Box marginTop="32px">
             <Typography fontWeight="600">Area to sell</Typography>
             <Box marginTop="16px">
-              <BaseSelect
+              <BaseMultiSelect
                 value={sellingArea}
                 options={areaOption}
-                onChange={(val) => handleFormChange("sellingArea", val)}
+                onChange={(e) => {
+                  const changeVal = e.target.value;
+                  console.log("changeVal ", changeVal);
+                  handleFormChange(
+                    "sellingArea",
+                    typeof value === "string" ? changeVal.split(",") : changeVal,
+                  );
+                }}
               />
             </Box>
           </Box>
@@ -151,18 +171,26 @@ export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
           <Box marginTop="32px">
             <Typography fontWeight="600">Tone of Voice</Typography>
             <Box marginTop="16px">
-              <StyledTextField
-                placeholder="e.g Professional"
+              <BaseMultiSelect
                 value={toneOfVoice}
-                onChange={(e: any) => handleFormChange("toneOfVoice", e.target.value)}
-                fullWidth
+                options={toneOfVoiceOption}
+                onChange={(e) => {
+                  const changeVal = e.target.value;
+                  handleFormChange(
+                    "toneOfVoice",
+                    typeof value === "string" ? changeVal.split(",") : changeVal,
+                  );
+                }}
               />
             </Box>
           </Box>
           <Box marginTop="32px">
             <Typography fontWeight="600">Select contents that your need</Typography>
             <Box marginTop="16px">
-              <ContentSelector />
+              <ContentSelector
+                value={content}
+                onChange={(val) => handleFormChange("content", val)}
+              />
             </Box>
           </Box>
           <Box display="flex" justifyContent="space-between" marginTop="48px">

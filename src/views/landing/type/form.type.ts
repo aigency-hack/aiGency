@@ -5,7 +5,7 @@ export type FormType = {
   sellingPoint: string;
   client: string;
   avgCost: string;
-  sellingArea: string;
-  toneOfVoice: string;
+  sellingArea: string[];
+  toneOfVoice: string[];
   content: string[];
 };

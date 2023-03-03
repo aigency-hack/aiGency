@@ -15,8 +15,8 @@ export const Home: NextPage = () => {
     sellingPoint: "",
     client: "",
     avgCost: "",
-    sellingArea: "",
-    toneOfVoice: "",
+    sellingArea: [],
+    toneOfVoice: [],
     content: [],
   });
 
