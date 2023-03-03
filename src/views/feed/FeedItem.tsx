@@ -3,6 +3,8 @@ import { Typography, Divider } from "@mui/material";
 import Pill from "../common/Pill";
 import { PrimaryButton } from "../common/PrimaryButton";
 import Bolt from "@mui/icons-material/Bolt";
+import { useRouter } from "next/router";
+import { ls } from "src/services/localStorage";
 
 const colorConstant = {
   "Social media & Ads": "#FFE6A9",
@@ -10,6 +12,11 @@ const colorConstant = {
   Ideas: "#FFD2D1",
 };
 export default function FeedItem(props: any) {
+  const router = useRouter();
+  const handleClick = () => {
+    ls.set("article", JSON.stringify(props));
+    router.push("/article");
+  };
   return (
     <>
       <Box marginTop="32px">
@@ -24,7 +31,12 @@ export default function FeedItem(props: any) {
         </Box>
         <Box display="flex" paddingRight="64px" justifyContent="space-between" alignItems="center">
           <Box marginTop="16px">
-            <Typography fontWeight="700" variant="h3">
+            <Typography
+              fontWeight="700"
+              variant="h3"
+              onClick={() => handleClick()}
+              sx={{ cursor: "pointer" }}
+            >
               {props.header}
             </Typography>
             <Box

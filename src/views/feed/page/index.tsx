@@ -296,13 +296,22 @@ export const Feed: NextPage = () => {
               Tips
             </Typography>
           </Box>
-          <TipItem topic={topic1} title="Day 1 Topic:" />
-          <TipItem topic={topic2} title="Day 2 Topic:" />
-          <TipItem topic={topic3} title="Day 3 Topic:" />
-          <TipItem topic={topic4} title="Day 4 Topic:" />
-          <TipItem topic={topic5} title="Day 5 Topic:" />
-          <TipItem topic={topic6} title="Day 6 Topic:" />
-          <TipItem topic={topic7} title="Day 7 Topic:" />
+          <TipItem
+            topic="Invite customers to come and taste different varieties of coffee beans. You can provide information about the... "
+            title="1. Host a coffee tasting event:"
+          />
+          <TipItem
+            topic="Develop your own unique blends of coffee beans and offer them for sale. This is a great way to differentiate..."
+            title="2. Host a coffee tasting event"
+          />
+          <TipItem
+            topic="Host classes on different brewing methods, such as pour-over, French press, and espresso. This is a great...Host classes on different brewing methods, such as pour-over, French press, and espresso. This is a great..."
+            title="3. Offer brewing classes"
+          />
+          <TipItem
+            topic="Consider packaging your coffee beans in unique and creative ways. For example, you could use mason jars, burlap... "
+            title="4. Package the beans creatively"
+          />
         </Box>
       </Box>
     </Box>

@@ -19,12 +19,29 @@ type Props = {
 };
 
 const options = [
-  { label: "Ascending", value: 0 },
-  { label: "Descending", value: 1 },
+  { label: "Automotive", value: "Automotive" },
+  { label: "Business Support & Supplies", value: "Business Support & Supplies" },
+  { label: "Computers & Electronics", value: "Computers & Electronics" },
+  { label: "Construction & Contractors ", value: "Construction & Contractors " },
+  { label: "Education", value: "Education" },
+  { label: "Entertainment ", value: "Entertainment" },
+  { label: "Food & Dining ", value: "Food & Dining" },
+  { label: "Health & Medicine", value: "Health & Medicine" },
+  { label: "Home & Garden", value: "Home & Garden" },
+  { label: "Legal & Financial", value: "Legal & Financial" },
+  {
+    label: "Manufacturing, Wholesale, Distribution",
+    value: "Manufacturing, Wholesale, Distribution",
+  },
+  { label: "Merchants (Retail) ", value: "Merchants (Retail)" },
+  { label: "Miscellaneous", value: "Miscellaneous" },
+  { label: "Personal Care & Services", value: "Personal Care & Services" },
+  { label: "Real Estate", value: "Real Estate" },
+  { label: "Travel & Transportation", value: "Travel & Transportation" },
 ];
 
 const areaOption = [
-  { label: "APACE", value: "APACE" },
+  { label: "APAC", value: "APAC" },
   { label: "EMEA", value: "EMEA" },
   { label: "AMER", value: "AMER" },
   { label: "Domestic", value: "Domestic" },
