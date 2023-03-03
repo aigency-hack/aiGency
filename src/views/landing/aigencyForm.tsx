@@ -20,6 +20,12 @@ const options = [
   { label: "Descending", value: 1 },
 ];
 
+const areaOption = [
+  { label: "APACE", value: "APACE" },
+  { label: "EMEA", value: "EMEA" },
+  { label: "AMER", value: "AMER" },
+  { label: "Domestic", value: "Domestic" },
+];
 export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
   const {
     name,
@@ -98,12 +104,13 @@ export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
             </Box>
           </Box>
           <Box marginTop="32px">
-            <Typography fontWeight="600">Who's your client</Typography>
+            <Typography fontWeight="600">Describe your client</Typography>
             <Box marginTop="16px">
-              <BaseSelect
+              <StyledTextField
+                placeholder="e.g Aigency"
                 value={client}
-                options={options}
-                onChange={(val) => handleFormChange("client", val)}
+                onChange={(e: any) => handleFormChange("client", e.target.value)}
+                fullWidth
               />
             </Box>
           </Box>
@@ -123,7 +130,7 @@ export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
             <Box marginTop="16px">
               <BaseSelect
                 value={sellingArea}
-                options={options}
+                options={areaOption}
                 onChange={(val) => handleFormChange("sellingArea", val)}
               />
             </Box>

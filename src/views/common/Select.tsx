@@ -11,7 +11,7 @@ export const StyledSelect = styled(Select)`
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 6px;
   }
-  color: black;
+  color: black !important;
 `;
 
 export const BaseSelect = ({
@@ -23,7 +23,18 @@ export const BaseSelect = ({
   onChange: any;
   value: any;
 }) => (
-  <StyledSelect fullWidth id="demo-simple-select" value={value} onChange={(val) => onChange(val)}>
+  <StyledSelect
+    fullWidth
+    id="demo-simple-select"
+    sx={{
+      color: "black !important",
+      "& .MuiSelect-icon": {
+        color: "black",
+      },
+    }}
+    value={value}
+    onChange={(val) => onChange(val)}
+  >
     {options.map((option) => (
       <MenuItem value={option.value} key={option.label}>
         {option.label}
