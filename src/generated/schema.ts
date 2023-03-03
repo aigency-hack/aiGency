@@ -13,7 +13,7 @@ export interface components {
     GenerateBlogContentDto: {
       productInfo: components["schemas"]["ProductDto"];
       mood: string;
-      title: string;
+      title: string | null;
     };
     BlogParagraph: { topic: string; content: string };
     Blog: {

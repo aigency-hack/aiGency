@@ -9,7 +9,7 @@ const colorConstant = {
   "Blog content": "#F2D4FF",
   Marketing: "#FFD2D1",
 };
-export default function FeedItem() {
+export default function FeedItem(props: any) {
   return (
     <>
       <Box marginTop="32px">
@@ -25,14 +25,12 @@ export default function FeedItem() {
         <Box display="flex" paddingRight="64px" justifyContent="space-between" alignItems="center">
           <Box>
             <Typography fontWeight="700" variant="h3">
-              Lorem ipsum dolor sit amet consectetur. Eu tincidunt id tortor morbi mi convallis.
+              {props.header}
             </Typography>
-            <Box marginTop="16px">
-              Lorem ipsum dolor sit amet consectetur. Eu tincidunt id tortor morbi mi convallis.
-            </Box>
+            <Box marginTop="16px">{props.content}</Box>
           </Box>
           <Box>
-            <img width="140px" height="140px" src="" />
+            <img width="140px" height="140px" src={props.image} />
           </Box>
         </Box>
         <PrimaryButton sx={{ borderRadius: "24px" }} startIcon={<Bolt />}>

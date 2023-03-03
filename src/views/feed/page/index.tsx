@@ -12,7 +12,7 @@ import {
 import { styled } from "@mui/styles";
 
 import type { NextPage } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navbar } from "src/views/common/Navbar";
 import Pill from "src/views/common/Pill";
 import { PrimaryButton } from "src/views/common/PrimaryButton";
@@ -21,6 +21,11 @@ import { StyledTextField } from "src/views/common/TextField";
 import Bolt from "@mui/icons-material/Bolt";
 import FeedItem from "../FeedItem";
 import TipItem from "../TipItem";
+import {
+  useGencyCreateBlog,
+  useGencyCreatePost,
+  useGencyCreateIdeas,
+} from "src/hooks/useGencyBackend";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -74,6 +79,56 @@ export const StyledTab = styled((props: StyledTabProps & TabProps) => (
 export const Feed: NextPage = () => {
   const [value, setValue] = useState(0);
 
+  const [form, setForm] = useState(JSON.parse(localStorage.getItem("form") || ""));
+  const [feed1, setFeed1] = useState<any>({
+    header: "",
+    content: "",
+    image: "",
+  });
+  const [feed2, setFeed2] = useState<any>({
+    header: "",
+    content: "",
+    image: "",
+  });
+
+  const handleCreatePost = useGencyCreatePost();
+  const handleCreateBlog = useGencyCreateBlog();
+  useEffect(() => {
+    // use hook
+    console.log(form);
+    const fetch = async () => {
+      const feed1Data = await handleCreateBlog({
+        productInfo: {
+          name: form.name,
+          usp: form.sellingPoint,
+          description: form.description,
+        },
+        mood: form.toneOfVoice[0],
+        title: null,
+      });
+      setFeed1({
+        header: feed1Data.title,
+        content: feed1Data.paragraphs[0].content,
+        image: feed1Data.images[0],
+      });
+      const feed2Data = await handleCreateBlog({
+        productInfo: {
+          name: form.name,
+          usp: form.sellingPoint,
+          description: form.description,
+        },
+        mood: form.toneOfVoice[0],
+        title: null,
+      });
+      setFeed2({
+        header: feed2Data.title,
+        content: feed2Data.paragraphs[0].content,
+        image: feed2Data.images[0],
+      });
+    };
+    fetch();
+  }, [form]);
+
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -88,8 +143,7 @@ export const Feed: NextPage = () => {
             </Typography>
             <Box display="flex">
               <Typography marginRight="8px" fontWeight="700" variant="h3">
-                {" "}
-                Roastbusta content idea
+                {form.name}
               </Typography>
               <img src="/static/icon/edit.svg" />
             </Box>
@@ -135,8 +189,8 @@ export const Feed: NextPage = () => {
               </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-              <FeedItem />
-              <FeedItem />
+              <FeedItem header={feed1.header} content={feed1.content} image={feed1.image} />
+              <FeedItem header={feed2.header} content={feed2.content} image={feed2.image} />
             </TabPanel>
             <TabPanel value={value} index={1}>
               Item Two
