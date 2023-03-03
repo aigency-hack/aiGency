@@ -5,6 +5,7 @@ import { PrimaryButton } from "../common/PrimaryButton";
 import Bolt from "@mui/icons-material/Bolt";
 import { useRouter } from "next/router";
 import { ls } from "src/services/localStorage";
+import SmallPill from "../common/SmallPill";
 
 const colorConstant = {
   "Social media & Ads": "#FFE6A9",
@@ -23,14 +24,14 @@ export default function FeedItem(props: any) {
         <Box display="flex" alignItems="center">
           <img src="/static/icon/phone.svg" />
           <Box mx="16px">
-            <Pill color={colorConstant[props.type]} onClick={() => console.log("")}>
+            <SmallPill color={colorConstant[props.type]} onClick={() => console.log("")}>
               {props.type}
-            </Pill>
+            </SmallPill>
           </Box>
           <Typography>3 March</Typography>
         </Box>
-        <Box display="flex" paddingRight="64px" justifyContent="space-between" alignItems="center">
-          <Box marginTop="16px">
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Box width="70%" marginTop="16px">
             <Typography
               fontWeight="700"
               variant="h3"
@@ -46,7 +47,7 @@ export default function FeedItem(props: any) {
               {props.content}
             </Box>
           </Box>
-          <Box sx={{ marginLeft: "16px" }}>
+          <Box width="30%" display="flex" justifyContent="center" sx={{ marginLeft: "16px" }}>
             <img width="140px" height="140px" src={props.image} />
           </Box>
         </Box>

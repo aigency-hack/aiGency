@@ -185,7 +185,7 @@ export const Feed: NextPage = () => {
             </Typography>
             <Box display="flex">
               <Typography marginRight="8px" fontWeight="700" variant="h3">
-                {form.name}
+                {form.name} Content Feed
               </Typography>
               <img src="/static/icon/edit.svg" />
             </Box>
@@ -287,6 +287,8 @@ export const Feed: NextPage = () => {
                   Social media & Ads
                 </Pill>
               </Box>
+            </Box>
+            <Box display="flex" marginTop="16px">
               <Pill onClick={() => console.log("click")} color="#F2D4FF">
                 Blog content
               </Pill>
