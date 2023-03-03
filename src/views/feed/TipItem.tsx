@@ -24,7 +24,7 @@ export default function TipItem(props: any) {
         </Typography>
         <Box marginTop="8px">
           <Typography fontWeight="700" fontSize="20px" color="#252525">
-            {props.topic}
+            {props.topic} <span style={{ color: "#FFB652" }}>see more</span>
           </Typography>
         </Box>
       </Box>
