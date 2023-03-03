@@ -302,15 +302,15 @@ export const Feed: NextPage = () => {
           />
           <TipItem
             topic="Develop your own unique blends of coffee beans and offer them for sale. This is a great way to differentiate..."
-            title="2. Host a coffee tasting event"
+            title="2. Create custom blends:"
           />
           <TipItem
             topic="Host classes on different brewing methods, such as pour-over, French press, and espresso. This is a great...Host classes on different brewing methods, such as pour-over, French press, and espresso. This is a great..."
-            title="3. Offer brewing classes"
+            title="3. Offer brewing classes:"
           />
           <TipItem
             topic="Consider packaging your coffee beans in unique and creative ways. For example, you could use mason jars, burlap... "
-            title="4. Package the beans creatively"
+            title="4. Package the beans creatively:"
           />
         </Box>
       </Box>
