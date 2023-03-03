@@ -95,17 +95,9 @@ export const Feed: NextPage = () => {
     content: "",
     image: "",
   });
-  const [topic1, setTopic1] = useState<string>("");
-  const [topic2, setTopic2] = useState<string>("");
-  const [topic3, setTopic3] = useState<string>("");
-  const [topic4, setTopic4] = useState<string>("");
-  const [topic5, setTopic5] = useState<string>("");
-  const [topic6, setTopic6] = useState<string>("");
-  const [topic7, setTopic7] = useState<string>("");
 
   const handleCreatePost = useGencyCreatePost();
   const handleCreateBlog = useGencyCreateBlog();
-  const handleCreateIdeas = useGencyCreateIdeas();
   useEffect(() => {
     // use hook
     const fetch = async () => {
@@ -118,11 +110,19 @@ export const Feed: NextPage = () => {
         mood: form.toneOfVoice[0],
         title: null,
       });
+      const feed1Contents = feed1Data.paragraphs.map((paragraph) => {
+        return paragraph.content;
+      });
       setFeed1({
         header: feed1Data.title,
         content: feed1Data.paragraphs[0].content,
         image: feed1Data.images[0],
         type: "Blog content",
+        article: {
+          header: feed1Data.title,
+          contents: feed1Contents,
+          images: feed1Data.images,
+        },
       });
       const feed2Data = await handleCreateBlog({
         productInfo: {
@@ -133,11 +133,19 @@ export const Feed: NextPage = () => {
         mood: form.toneOfVoice[0],
         title: null,
       });
+      const feed2Contents = feed2Data.paragraphs.map((paragraph) => {
+        return paragraph.content;
+      });
       setFeed2({
         header: feed2Data.title,
         content: feed2Data.paragraphs[0].content,
         image: feed2Data.images[0],
         type: "Blog content",
+        article: {
+          header: feed2Data.title,
+          contents: feed2Contents,
+          images: feed2Data.images,
+        },
       });
       const feed3Data = await handleCreatePost({
         productInfo: {
@@ -153,22 +161,12 @@ export const Feed: NextPage = () => {
         content: feed3Data.content,
         image: feed3Data.images[0],
         type: "Social media & Ads",
-      });
-      const ideaData = await handleCreateIdeas({
-        productInfo: {
-          name: form.name,
-          usp: form.sellingPoint,
-          description: form.description,
+        article: {
+          header: feed3Data.content,
+          contents: [feed3Data.content],
+          images: feed3Data.images,
         },
-        mood: form.toneOfVoice[0],
       });
-      setTopic1(ideaData[0]);
-      setTopic2(ideaData[1]);
-      setTopic3(ideaData[2]);
-      setTopic4(ideaData[3]);
-      setTopic5(ideaData[4]);
-      setTopic6(ideaData[5]);
-      setTopic7(ideaData[6]);
     };
     fetch();
   }, [form]);
@@ -230,18 +228,21 @@ export const Feed: NextPage = () => {
                 content={feed1.content}
                 image={feed1.image}
                 type={feed1.type}
+                article={feed1.article}
               />
               <FeedItem
                 header={feed2.header}
                 content={feed2.content}
                 image={feed2.image}
                 type={feed2.type}
+                article={feed2.article}
               />
               <FeedItem
                 header={feed3.header}
                 content={feed3.content}
                 image={feed3.image}
                 type={feed3.type}
+                article={feed3.article}
               />
             </TabPanel>
             <TabPanel value={value} index={1}>
@@ -250,6 +251,7 @@ export const Feed: NextPage = () => {
                 content={feed3.content}
                 image={feed3.image}
                 type={feed3.type}
+                article={feed3.article}
               />
             </TabPanel>
             <TabPanel value={value} index={2}>
@@ -258,12 +260,14 @@ export const Feed: NextPage = () => {
                 content={feed1.content}
                 image={feed1.image}
                 type={feed1.type}
+                article={feed1.article}
               />
               <FeedItem
                 header={feed2.header}
                 content={feed2.content}
                 image={feed2.image}
                 type={feed2.type}
+                article={feed2.article}
               />
             </TabPanel>
           </Box>

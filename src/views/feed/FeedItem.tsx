@@ -14,7 +14,7 @@ const colorConstant = {
 export default function FeedItem(props: any) {
   const router = useRouter();
   const handleClick = () => {
-    ls.set("article", JSON.stringify(props));
+    ls.set("article", JSON.stringify(props.article));
     router.push("/article");
   };
   return (

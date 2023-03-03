@@ -62,13 +62,19 @@ export const Article: NextPage = () => {
                   <Typography fontWeight="700" variant="h2">
                     {article.header}
                   </Typography>
-                  <Box fontSize="20px" marginTop="24px">
-                    {article.content}
-                  </Box>
+                  {article.contents.map((content, indice) => {
+                    return (
+                      <Box key={indice} fontSize="20px" marginTop="24px">
+                        {content}
+                      </Box>
+                    );
+                  })}
                 </Box>
               </Box>
               <Box marginTop="24px">
-                <img width="512px" height="512px" src={article.image} />
+                {article.images.map((image, indice) => {
+                  return <img key={indice} width="512px" height="512px" src={image} />;
+                })}
               </Box>
             </Box>
           </Box>
