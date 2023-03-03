@@ -7,7 +7,7 @@ import Bolt from "@mui/icons-material/Bolt";
 const colorConstant = {
   "Social media & Ads": "#FFE6A9",
   "Blog content": "#F2D4FF",
-  Marketing: "#FFD2D1",
+  Ideas: "#FFD2D1",
 };
 export default function FeedItem(props: any) {
   return (
@@ -16,8 +16,8 @@ export default function FeedItem(props: any) {
         <Box display="flex" alignItems="center">
           <img src="/static/icon/phone.svg" />
           <Box mx="16px">
-            <Pill color={colorConstant["Social media & Ads"]} onClick={() => console.log("")}>
-              Social media & Ads
+            <Pill color={colorConstant[props.type]} onClick={() => console.log("")}>
+              {props.type}
             </Pill>
           </Box>
           <Typography>3 March</Typography>

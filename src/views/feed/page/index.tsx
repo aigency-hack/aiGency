@@ -90,12 +90,52 @@ export const Feed: NextPage = () => {
     content: "",
     image: "",
   });
+  const [feed3, setFeed3] = useState<any>({
+    header: "",
+    content: "",
+    image: "",
+  });
+  const [idea1, setIdea1] = useState<any>({
+    header: "",
+    content: "",
+    image: "",
+  });
+  const [idea2, setIdea2] = useState<any>({
+    header: "",
+    content: "",
+    image: "",
+  });
+  const [idea3, setIdea3] = useState<any>({
+    header: "",
+    content: "",
+    image: "",
+  });
+  const [idea4, setIdea4] = useState<any>({
+    header: "",
+    content: "",
+    image: "",
+  });
+  const [idea5, setIdea5] = useState<any>({
+    header: "",
+    content: "",
+    image: "",
+  });
+  const [idea6, setIdea6] = useState<any>({
+    header: "",
+    content: "",
+    image: "",
+  });
+  const [idea7, setIdea7] = useState<any>({
+    header: "",
+    content: "",
+    image: "",
+  });
 
   const handleCreatePost = useGencyCreatePost();
   const handleCreateBlog = useGencyCreateBlog();
+  const handleCreateIdeas = useGencyCreateIdeas();
   useEffect(() => {
     // use hook
-    console.log(form);
     const fetch = async () => {
       const feed1Data = await handleCreateBlog({
         productInfo: {
@@ -110,6 +150,7 @@ export const Feed: NextPage = () => {
         header: feed1Data.title,
         content: feed1Data.paragraphs[0].content,
         image: feed1Data.images[0],
+        type: "Blog content",
       });
       const feed2Data = await handleCreateBlog({
         productInfo: {
@@ -124,6 +165,72 @@ export const Feed: NextPage = () => {
         header: feed2Data.title,
         content: feed2Data.paragraphs[0].content,
         image: feed2Data.images[0],
+        type: "Blog content",
+      });
+      const feed3Data = await handleCreatePost({
+        productInfo: {
+          name: form.name,
+          usp: form.sellingPoint,
+          description: form.description,
+        },
+        mood: form.toneOfVoice[0],
+        purpose: null,
+      });
+      setFeed3({
+        header: feed3Data.content,
+        content: feed3Data.content,
+        image: feed3Data.images[0],
+        type: "Social media & Ads",
+      });
+      const ideaData = await handleCreateIdeas({
+        productInfo: {
+          name: form.name,
+          usp: form.sellingPoint,
+          description: form.description,
+        },
+        mood: form.toneOfVoice[0],
+      });
+      setIdea1({
+        header: ideaData[0],
+        content: ideaData[0],
+        image: null,
+        type: "Ideas",
+      });
+      setIdea2({
+        header: ideaData[1],
+        content: ideaData[1],
+        image: null,
+        type: "Ideas",
+      });
+      setIdea3({
+        header: ideaData[2],
+        content: ideaData[2],
+        image: null,
+        type: "Ideas",
+      });
+      setIdea4({
+        header: ideaData[3],
+        content: ideaData[3],
+        image: null,
+        type: "Ideas",
+      });
+      setIdea5({
+        header: ideaData[4],
+        content: ideaData[4],
+        image: null,
+        type: "Ideas",
+      });
+      setIdea6({
+        header: ideaData[5],
+        content: ideaData[5],
+        image: null,
+        type: "Ideas",
+      });
+      setIdea7({
+        header: ideaData[6],
+        content: ideaData[6],
+        image: null,
+        type: "Ideas",
       });
     };
     fetch();
@@ -178,28 +285,49 @@ export const Feed: NextPage = () => {
                   }}
                   label="Blog content"
                 />
-                <Tab
-                  sx={{
-                    "&.Mui-selected": { color: "#252525" },
-                    fontSize: "16px",
-                    color: "#6A6A6A",
-                  }}
-                  label="Marketing"
-                />
               </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-              <FeedItem header={feed1.header} content={feed1.content} image={feed1.image} />
-              <FeedItem header={feed2.header} content={feed2.content} image={feed2.image} />
+              <FeedItem
+                header={feed1.header}
+                content={feed1.content}
+                image={feed1.image}
+                type={feed1.type}
+              />
+              <FeedItem
+                header={feed2.header}
+                content={feed2.content}
+                image={feed2.image}
+                type={feed2.type}
+              />
+              <FeedItem
+                header={feed3.header}
+                content={feed3.content}
+                image={feed3.image}
+                type={feed3.type}
+              />
             </TabPanel>
             <TabPanel value={value} index={1}>
-              Item Two
+              <FeedItem
+                header={feed3.header}
+                content={feed3.content}
+                image={feed3.image}
+                type={feed3.type}
+              />
             </TabPanel>
             <TabPanel value={value} index={2}>
-              Item Three
-            </TabPanel>
-            <TabPanel value={value} index={3}>
-              Item Three
+              <FeedItem
+                header={feed1.header}
+                content={feed1.content}
+                image={feed1.image}
+                type={feed1.type}
+              />
+              <FeedItem
+                header={feed2.header}
+                content={feed2.content}
+                image={feed2.image}
+                type={feed2.type}
+              />
             </TabPanel>
           </Box>
         </Box>
@@ -220,11 +348,6 @@ export const Feed: NextPage = () => {
               </Box>
               <Pill onClick={() => console.log("click")} color="#F2D4FF">
                 Blog content
-              </Pill>
-            </Box>
-            <Box display="flex" marginTop="16px">
-              <Pill onClick={() => console.log("click")} color="#FFD2D1">
-                Marketing
               </Pill>
             </Box>
           </Box>
