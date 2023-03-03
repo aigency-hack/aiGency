@@ -10,6 +10,8 @@ import { FormType } from "./type/form.type";
 import ArrowLeft from "@mui/icons-material/West";
 import ArrowRight from "@mui/icons-material/East";
 import ContentSelector from "../common/ContentSelector";
+import { useRouter } from "next/router";
+import { ls } from "src/services/localStorage";
 
 type Props = {
   value: FormType;
@@ -48,12 +50,16 @@ export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
     toneOfVoice,
     content,
   } = value;
+  const router = useRouter();
   const handleFormChange = (field: string, changeVal: any) => {
     const oldValue: any = { ...value };
     oldValue[field] = changeVal;
     onChange({ ...oldValue });
   };
-  console.log("value ", value);
+  const submitForm = () => {
+    ls.set("form", JSON.stringify(value));
+    router.push("/feed");
+  };
   const [step, setStep] = useState(1);
   return (
     <Box bgcolor="white" padding="24px" borderRadius="24px" minWidth="548px">
@@ -197,7 +203,7 @@ export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
             <SecondaryButton onClick={() => setStep(2)} startIcon={<ArrowLeft />}>
               Back
             </SecondaryButton>
-            <PrimaryButton onClick={() => setStep(3)} endIcon={<ArrowRight />}>
+            <PrimaryButton onClick={() => submitForm()} endIcon={<ArrowRight />}>
               Let's get started
             </PrimaryButton>
           </Box>
