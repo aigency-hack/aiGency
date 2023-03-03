@@ -187,7 +187,7 @@ export const Feed: NextPage = () => {
             </Typography>
             <Box display="flex">
               <Typography marginRight="8px" fontWeight="700" variant="h3">
-                {form.name}
+                {form.name} Content Feed
               </Typography>
               <img src="/static/icon/edit.svg" />
             </Box>
