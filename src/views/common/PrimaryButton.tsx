@@ -14,6 +14,9 @@ export const PrimaryButton: FC<ButtonProps> = (props) => {
         background: "#0D1A2D",
         color: "white",
         borderRadius: 12,
+        "&:hover, &:focus": {
+          background: "#28384F",
+        },
         ...props.sx,
       }}
     />

@@ -84,7 +84,7 @@ export const Navbar: FC<Props> = (props) => {
               width="100%"
             >
               <Box />
-              <Typography variant="h3">Navbar</Typography>
+
               <Stack direction="row" spacing={3}>
                 {/* <ThemeToggleSwitch /> */}
               </Stack>

@@ -25,8 +25,10 @@ export const Home: NextPage = () => {
       sx={{
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
+        backgroundSize: "cover",
         backgroundImage: `url('/static/images/bg.png')`,
       }}
+      height="100vh"
       display="flex"
       justifyContent="space-between"
       padding="60px 75px"
@@ -43,7 +45,7 @@ export const Home: NextPage = () => {
               background: "linear-gradient(90deg, #FF9466 0%, #FFD43E 100%)",
               borderRadius: "24px",
               padding: "24px",
-              color: "white",
+              color: "black",
             }}
           >
             <Typography variant="h3">

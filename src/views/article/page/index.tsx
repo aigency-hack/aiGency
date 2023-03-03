@@ -26,6 +26,7 @@ import {
   useGencyCreatePost,
   useGencyCreateIdeas,
 } from "src/hooks/useGencyBackend";
+import SmallPill from "src/views/common/SmallPill";
 
 const colorConstant = {
   "Social media & Ads": "#FFE6A9",
@@ -46,9 +47,9 @@ export const Article: NextPage = () => {
               <Box display="flex" alignItems="center">
                 <img src="/static/icon/phone.svg" />
                 <Box mx="16px">
-                  <Pill color={colorConstant[article.type]} onClick={() => console.log("")}>
+                  <SmallPill color={colorConstant[article.type]} onClick={() => console.log("")}>
                     {article.type}
-                  </Pill>
+                  </SmallPill>
                 </Box>
                 <Typography>3 March</Typography>
               </Box>
@@ -67,7 +68,7 @@ export const Article: NextPage = () => {
                   </Box>
                 </Box>
               </Box>
-              <Box marginTop="24px">
+              <Box marginTop="32px">
                 <img width="512px" height="512px" src={article.image} />
               </Box>
             </Box>
@@ -88,6 +89,8 @@ export const Article: NextPage = () => {
                   Social media & Ads
                 </Pill>
               </Box>
+            </Box>
+            <Box display="flex" marginTop="16px">
               <Pill onClick={() => console.log("click")} color="#F2D4FF">
                 Blog content
               </Pill>

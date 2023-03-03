@@ -283,6 +283,8 @@ export const Feed: NextPage = () => {
                   Social media & Ads
                 </Pill>
               </Box>
+            </Box>
+            <Box display="flex" marginTop="16px">
               <Pill onClick={() => console.log("click")} color="#F2D4FF">
                 Blog content
               </Pill>

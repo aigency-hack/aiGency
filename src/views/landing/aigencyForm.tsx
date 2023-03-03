@@ -12,6 +12,7 @@ import ArrowRight from "@mui/icons-material/East";
 import ContentSelector from "../common/ContentSelector";
 import { useRouter } from "next/router";
 import { ls } from "src/services/localStorage";
+import { StyledMutliTextField } from "../common/MutlilineTextField";
 
 type Props = {
   value: FormType;
@@ -108,7 +109,7 @@ export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
           <Box marginTop="32px">
             <Typography fontWeight="600">Tell us about your brand</Typography>
             <Box marginTop="16px">
-              <StyledTextField
+              <StyledMutliTextField
                 minRows="3"
                 multiline
                 placeholder=" e.g. Aigency is a service that leverages the power of AI writing to help brands and products generate high-quality marketing and content materials."
