@@ -13,7 +13,7 @@ type Props = {
 
 type ContentBoxProps = {
   children: any;
-  active: boolean;
+  active?: boolean;
 };
 
 const ContentBox = ({ children, active }: ContentBoxProps) => {
@@ -38,7 +38,8 @@ const ContentBox = ({ children, active }: ContentBoxProps) => {
   );
 };
 
-export default function ContentSelector({ onChange, value }: Props) {
+// export default function ContentSelector({ onChange, value }: Props) {
+export default function ContentSelector() {
   return (
     <Box display="flex" flexDirection="column">
       <Box display="flex" justifyContent="space-around">
