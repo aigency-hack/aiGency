@@ -89,6 +89,7 @@ export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
             <Box marginTop="16px">
               <StyledTextField
                 value={name}
+                placeholder="e.g. aigency"
                 onChange={(e: any) => handleFormChange("name", e.target.value)}
                 fullWidth
               />
@@ -112,7 +113,7 @@ export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
               <StyledMutliTextField
                 minRows="3"
                 multiline
-                placeholder=" e.g. Aigency is a service that leverages the power of AI writing to help brands and products generate high-quality marketing and content materials."
+                placeholder=" e.g. an aggregated Ai-s software, to help individuals and SMEs work easier with Ai. No technical skills needed. Simply tell us what're working on, and you're ready to go!."
                 fullWidth
                 onChange={(e: any) => handleFormChange("description", e.target.value)}
                 value={description}
@@ -133,7 +134,7 @@ export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
             <Typography fontWeight="600">What's your unique selling point</Typography>
             <Box marginTop="16px">
               <StyledTextField
-                placeholder="e.g Aigency"
+                placeholder="e.g platform to help everyone be able to use Ai effectively with no tech skills needed"
                 value={sellingPoint}
                 onChange={(e: any) => handleFormChange("sellingPoint", e.target.value)}
                 fullWidth
@@ -144,7 +145,7 @@ export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
             <Typography fontWeight="600">Describe your client</Typography>
             <Box marginTop="16px">
               <StyledTextField
-                placeholder="e.g Aigency"
+                placeholder="e.g SMEs"
                 value={client}
                 onChange={(e: any) => handleFormChange("client", e.target.value)}
                 fullWidth
@@ -155,7 +156,7 @@ export const AIgencyForm: FC<Props> = ({ value, onChange }) => {
             <Typography fontWeight="600">How much does your product cost?</Typography>
             <Box marginTop="16px">
               <StyledTextField
-                placeholder="e.g Aigency"
+                placeholder="e.g $9"
                 value={avgCost}
                 onChange={(e: any) => handleFormChange("avgCost", e.target.value)}
                 fullWidth
